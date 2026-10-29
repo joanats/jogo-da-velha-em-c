@@ -1,7 +1,6 @@
 #include "jogo.h"
 
-int main(void)
-{
+int main() {
     Partida jogo;
 
     Partida_inicia(&jogo);
