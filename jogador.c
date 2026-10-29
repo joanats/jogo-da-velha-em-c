@@ -4,31 +4,30 @@
 void JogadorTeclado_joga(JogadorTeclado *j, Tabuleiro *t)
 {
     int linha, coluna;
+    int jogada_valida = 0;
+
     char simbolo;
 
     if (j->tipo == 4) {
         simbolo = 'X';
-    }
-    else {
+    } else {
         simbolo = 'O';
     }
 
-    while (1) {
+    while (!jogada_valida) {
 
         printf("Jogador %c, digite a linha e coluna: ", simbolo);
         scanf("%d %d", &linha, &coluna);
 
         if (linha < 0 || linha > 2 || coluna < 0 || coluna > 2) {
             printf("Posicao invalida!\n");
-        }
 
-        else if (t->M[linha][coluna] != 0) {
+        } else if (t->M[linha][coluna] != 0) {
             printf("Casa ocupada!\n");
-        }
 
-        else {
+        } else {
             Tabuleiro_marcaJogada(t, linha, coluna, j->tipo);
-            break;
+            jogada_valida = 1;
         }
     }
 }
